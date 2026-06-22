@@ -1,0 +1,220 @@
+:root {
+  color-scheme: light;
+  --bg: #f4eee6;
+  --bg-2: #efe4d7;
+  --surface: #fffaf4;
+  --surface-2: #f8f0e8;
+  --hairline: #e5d8c9;
+  --ink: #211912;
+  --ink-muted: #6f6257;
+  --ink-subtle: #8d7f72;
+  --accent: #cc5c38;
+  --accent-hover: #b84d2d;
+  --accent-subtle: rgba(204, 92, 56, 0.14);
+  --r: 10px;
+  --r-card: 16px;
+  --r-pill: 9999px;
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s6: 24px;
+  --s8: 32px;
+  --s12: 48px;
+  --s16: 64px;
+  --font: "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  --dur-fast: 160ms;
+  --dur-press: 100ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font: 16px/1.55 var(--font);
+  background:
+    radial-gradient(circle at top left, rgba(204, 92, 56, 0.08), transparent 34%),
+    radial-gradient(circle at 85% 15%, rgba(71, 46, 32, 0.06), transparent 24%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 40%);
+  opacity: 0.35;
+}
+
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: var(--s6);
+}
+
+.card {
+  width: min(100%, 760px);
+  background: rgba(255, 250, 244, 0.9);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  box-shadow: 0 18px 60px rgba(75, 54, 38, 0.08);
+  padding: clamp(24px, 4vw, 40px);
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow {
+  margin: 0 0 var(--s4);
+  color: var(--ink-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hero {
+  display: grid;
+  gap: var(--s6);
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 1.5rem + 3vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  max-width: 12ch;
+}
+
+.lede {
+  margin: var(--s4) 0 0;
+  max-width: 52ch;
+  color: var(--ink-muted);
+  font-size: 1rem;
+}
+
+.joke {
+  position: relative;
+  min-height: 180px;
+  display: grid;
+  align-content: center;
+  gap: var(--s3);
+  padding: clamp(20px, 3vw, 28px);
+  background: linear-gradient(180deg, rgba(248, 240, 232, 0.95), rgba(255, 250, 244, 0.95));
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+}
+
+.joke::after {
+  content: "";
+  position: absolute;
+  inset: auto var(--s4) var(--s4) auto;
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent));
+  opacity: 0.45;
+}
+
+.joke__prompt,
+.joke__setup,
+.joke__punchline {
+  margin: 0;
+}
+
+.joke__prompt {
+  color: var(--ink-subtle);
+}
+
+.joke__setup {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem);
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.joke__punchline {
+  color: var(--accent);
+  font-size: clamp(1rem, 0.95rem + 0.4vw, 1.12rem);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  margin-top: var(--s6);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  padding: 0.9rem 1.2rem;
+  min-height: 48px;
+  background: var(--accent);
+  color: #fff9f5;
+  font: 700 0.95rem/1 var(--font);
+  cursor: pointer;
+  transition:
+    transform var(--dur-press) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-fast) var(--ease-standard);
+  box-shadow: 0 8px 18px rgba(204, 92, 56, 0.22);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .shell {
+    padding: var(--s4);
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .actions {
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

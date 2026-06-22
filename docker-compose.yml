@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    command: ["uv", "run", "--no-sync", "jokes"]
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+

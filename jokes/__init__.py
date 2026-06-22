@@ -1,0 +1,2 @@
+"""Jokes app package."""
+

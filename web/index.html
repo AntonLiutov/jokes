@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jokes</title>
+    <meta
+      name="description"
+      content="A single-screen random joke app with one clear action."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card" aria-labelledby="title">
+        <p class="eyebrow">Random jokes</p>
+        <div class="hero">
+          <div>
+            <h1 id="title">One button. A fresh joke.</h1>
+            <p class="lede">
+              Press the button to pull a random joke from the bundled set.
+            </p>
+          </div>
+
+          <article class="joke" aria-live="polite" aria-atomic="true">
+            <p class="joke__prompt" id="jokePrompt">
+              Your joke will appear here.
+            </p>
+            <p class="joke__setup" id="jokeSetup" hidden></p>
+            <p class="joke__punchline" id="jokePunchline" hidden></p>
+          </article>
+        </div>
+
+        <div class="actions">
+          <button class="btn" id="jokeButton" type="button">
+            Tell me a joke
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
